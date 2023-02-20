@@ -7,7 +7,6 @@ import { fromEvent, Subject, takeUntil, combineLatest, startWith } from 'rxjs';
 export class IsInViewDirective implements AfterViewInit, OnDestroy {
   @Output() inView = new EventEmitter<boolean>();
   unsubscribe$ = new Subject<void>();
-  initial = new Subject<void>();
   constructor(private element: ElementRef) { }
 
   ngAfterViewInit(): void {
@@ -21,17 +20,12 @@ export class IsInViewDirective implements AfterViewInit, OnDestroy {
         this.unsubscribe$.complete();
       }
     });
-    this.initial.next();
   }
 
   ngOnDestroy(): void {
     if (this.unsubscribe$) {
       this.unsubscribe$.next();
       this.unsubscribe$.complete();
-    }
-
-    if (this.initial) {
-      this.initial.complete();
     }
   }
 
