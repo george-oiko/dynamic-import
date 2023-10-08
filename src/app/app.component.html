@@ -1,5 +1,10 @@
 <button (click)="show()">Show</button>
 
+
+<ng-container *ngIf="show">
+    <title>Page <title></title></title>
+</ng-container>
+
 <ng-container *ngComponentOutlet="information | async"></ng-container>
 <ng-container *ngComponentOutlet="education | async"></ng-container>
 
@@ -10,4 +15,4 @@
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div appIsInView (inView)="show()">
     <ng-container *ngComponentOutlet="name | async"></ng-container>
-</div>>
+</div>

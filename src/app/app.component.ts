@@ -10,6 +10,8 @@ export class AppComponent implements OnInit {
   name: Promise<any> | undefined;
   information: Promise<any> | undefined;
   education: Promise<any> | undefined;
+
+  constructor(){}
   
   ngOnInit(): void {
     this.information = import(/* webpackPrefetch: 1 */ './information/information.component').then(i => i.InformationComponent);
